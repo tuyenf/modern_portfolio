@@ -32,3 +32,4 @@ function toggleMenu() {
 
     }
 }
+menuBranding.addEventListener(`click`, toggleMenu)
