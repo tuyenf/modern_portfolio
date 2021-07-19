@@ -1,0 +1,63 @@
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-home-image: true;
+$home-image: url(../img/backgorund.jpeg);
+$background-opacity: 0.8;
+
+@mixin easeOut {
+    transition: all .3s ease-out;
+}
+
+@mixin background {
+    @if $show-home-image {
+        &#bg-image {
+            background: $home-image;
+            background-attachment: fixed;
+            background-size: cover;
+            width: 100%;
+            background-repeat: no-repeat;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba($primary-color, $background-opacity);
+                z-index: -1;
+            }
+        }
+    }
+}
+
+// Set Text Color
+@function set-text-color($color) {
+    @if(lightness($color) > 40) {
+        @return #000;
+    } @else {
+        @return #fff; 
+    }
+} 
+
+// Media Query Mixins
+@mixin mediaSm {
+    @media  screen and (max-width: 500px) {
+        @content;
+    }   
+}
+@mixin mediaMd {
+    @media  screen and (max-width: 768px) {
+        @content;
+    }   
+}
+@mixin mediaLg {
+    @media  screen and (min-width:769px) and (max-width: 1170px) {
+        @content;
+    }   
+}
+@mixin mediaXl {
+    @media (min-width: 1171px) {
+        @content;
+    }   
+}
